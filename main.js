@@ -20,7 +20,6 @@ async function initMap() {
     // Add some markers to the map.
     const markers = locations.map((location, i) => {
       const pinGlyph = new google.maps.marker.PinElement({
-        glyphColor: "black",
         background: "#FF363A",
         borderColor: "black",
         scale: 0.8
@@ -33,7 +32,10 @@ async function initMap() {
       // markers can only be keyboard focusable when they have click listeners
       // open info window when marker is clicked
       marker.addListener("click", () => {
-        infoWindow.setContent(Number(location.lat) + ", " + Number(location.lng));
+        var href = "//maps.google.com/maps?&z=13&saddr=" + escape(location.name + ', ' + location.address + ',' + location.address1) + '&sll=' + location.lat + ',' + location.lng;
+        var link = "<a style='color: #15C;' href='" + href + "' target='_blank'>Driving Directions</a>";
+        var hr = "<hr style='border: 0; height: 1px; color: #ccc; background-color: #ccc;'>";
+        infoWindow.setContent("<b>" + icon.name + "</b><br/>" + icon.address + "<br/>" + icon.address1 + "<br/>" + icon.phone + hr + link);
         infoWindow.open(map, marker);
       });
       return marker;
