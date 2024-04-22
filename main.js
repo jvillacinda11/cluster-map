@@ -16,14 +16,14 @@ async function initMap() {
       content: "",
       disableAutoPan: true,
     });
-    // Create an array of alphabetical characters used to label the markers.
-    const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
     // Add some markers to the map.
     const markers = locations.map((location, i) => {
-      const label = location.label;
       const pinGlyph = new google.maps.marker.PinElement({
-        glyph: label,
-        glyphColor: "white",
+        glyphColor: "black",
+        background: "#FF363A",
+        borderColor: "black",
+        scale: 0.8
       });
       const marker = new google.maps.marker.AdvancedMarkerElement({
         position: {lat: Number(location.lat), lng:  Number(location.lng)},
@@ -33,7 +33,7 @@ async function initMap() {
       // markers can only be keyboard focusable when they have click listeners
       // open info window when marker is clicked
       marker.addListener("click", () => {
-        infoWindow.setContent(Number(location.lat) + ", " + Number(position.lng));
+        infoWindow.setContent(Number(location.lat) + ", " + Number(location.lng));
         infoWindow.open(map, marker);
       });
       return marker;
