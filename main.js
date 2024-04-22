@@ -20,14 +20,13 @@ async function initMap() {
     const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     // Add some markers to the map.
     const markers = locations.map((location, i) => {
-      const {lat, lng} = location;
       const label = location.label;
       const pinGlyph = new google.maps.marker.PinElement({
         glyph: label,
         glyphColor: "white",
       });
       const marker = new google.maps.marker.AdvancedMarkerElement({
-        position: {lat, lng},
+        position: {lat: location.lat, lng: location.lng},
         content: pinGlyph.element,
       });
   
