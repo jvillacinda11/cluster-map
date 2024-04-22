@@ -35,7 +35,7 @@ async function initMap() {
         var href = "//maps.google.com/maps?&z=13&saddr=" + escape(location.name + ', ' + location.address + ',' + location.address1) + '&sll=' + location.lat + ',' + location.lng;
         var link = "<a style='color: #15C;' href='" + href + "' target='_blank'>Driving Directions</a>";
         var hr = "<hr style='border: 0; height: 1px; color: #ccc; background-color: #ccc;'>";
-        infoWindow.setContent("<b>" + icon.name + "</b><br/>" + icon.address + "<br/>" + icon.address1 + "<br/>" + icon.phone + hr + link);
+        infoWindow.setContent("<b>" + location.name + "</b><br/>" + location.address + "<br/>" + location.address1 + "<br/>" + location.phone + hr + link);
         infoWindow.open(map, marker);
       });
       return marker;
