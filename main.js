@@ -26,14 +26,14 @@ async function initMap() {
         glyphColor: "white",
       });
       const marker = new google.maps.marker.AdvancedMarkerElement({
-        position: {lat: location.lat, lng: location.lng},
+        position: {lat: Number(location.lat), lng:  Number(location.lng)},
         content: pinGlyph.element,
       });
   
       // markers can only be keyboard focusable when they have click listeners
       // open info window when marker is clicked
       marker.addListener("click", () => {
-        infoWindow.setContent(position.lat + ", " + position.lng);
+        infoWindow.setContent(Number(location.lat) + ", " + Number(position.lng));
         infoWindow.open(map, marker);
       });
       return marker;
